@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Просмотр подозреваемых {% endblock %}
+{% block content %}
+  <a href="
+  {% if query %}
+    {{ url_for('clean_query') }}
+  {% elif galery %}
+    {{ url_for('clean_galery') }}
+  {% endif %}">
+    <button class="btn btn-danger">
+      Очистить
+    </button>
+  </a>
+  <br>
+  <p>Люди с камер:<br>
+    {% for camera in used_cameras %}
+      Камера № {{ camera }} по адресу: {{ address(camera) }} <br>
+    {% endfor %}</p>
+  <div class="row">
+    {% for image in image_catalog %}
+      <img class="mb-2 ml-2" src="{{ url_for('static', filename=image) }}" alt="{{ image }}">
+    {% endfor %}
+  </div>
+{% endblock %}

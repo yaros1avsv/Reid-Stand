@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Просмотр подозреваемых {% endblock %}
+{% block content %}
+  <br>
+  <div class="col">
+    {% for image in image_catalog %}
+      <div class="container">
+        <img class="m-x-auto img-thumbnail" src="{{ url_for('static', filename=image.path) }}" alt="{{ image.path }}">
+        <br>
+        <ul class="list-group list-group-flush">
+          {% for adress in image.adress %}
+            <li class="list-group-item">Камера № {{ adress[0] }} располагается по адресу:
+              <mark> {{ adress[1] }}</mark>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

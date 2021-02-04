@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} Карта {% endblock %}
+{% block content %}
+  <br>
+  <div class="row justify-content-center a">
+    <div class="col-9" id="map" style="width:900px; height:580px;"></div>
+  </div>
+  <script>
+      var mapOptions = {
+          center: [56.82691909625636, 60.61641828250412],
+          zoom: 12
+      };
+      var map = new L.map('map', mapOptions);
+      var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+      map.addLayer(layer);
+      var iconOptions = {
+          iconUrl: 'static/img/cctv.png',
+          iconSize: [30, 30],
+      };
+      var customIcon = L.icon(iconOptions);
+      {% for marker in markers %}
+
+          var markerOptions = {
+              title: "{{ marker.address }}",
+              clickable: true,
+              icon: customIcon
+          };
+          var marker = new L.marker({{ marker.coordinates }}, markerOptions);
+          marker.bindPopup('<a href="{{ url_for('camera_detail', cluster=marker.cluster_id, id=marker.camera_id, address=marker.address)}}"> <button type="button" class="btn btn-primary">Камера № {{marker.cluster_id}}{{marker.camera_id}} <br> {{marker.address}} </button></a').openPopup();
+          marker.addTo(map);
+
+      {% endfor %}
+  </script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Просмотр камеры {{ id }} {% endblock %}
+{% block content %}
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-8 col-md-11">
+      <br>
+      <a href="{{ url_for('detect', cluster=cluster, id=id) }}">
+        <button class="btn btn-danger">
+          Выполнить обнаружение
+        </button>
+      </a>
+      <p>Адрес {{ address }}</p>
+      <body>
+      {% for image in image_catalog %}
+        <video controls width="900" height="580" preload="metadata" loop="True">
+          <source src="{{ url_for('static', filename=image) }}" type="video/mp4">
+        </video>
+      {% endfor %}
+      </body>
+      <br>
+    </div>
+  </div>
+{% endblock %}
