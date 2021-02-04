@@ -1,1 +1,7 @@
 /static/reid/
+/core/backbone.py
+/core/common.py
+/core/config.py
+/core/dataset.py
+/core/utils.py
+/core/yolov4.py
