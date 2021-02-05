@@ -46,7 +46,8 @@ $ python setup.py develop`
 Далее необходимо скопировать скачанный файл yolov4.weights из папки загрузок в папку data
 
 Чтобы реализовать YOLOv4 с помощью TensorFlow, сначала мы конвертируем .weights в соответствующие файлы модели TensorFlow, а затем запускаем модель.
-
-`# Преобразование весов Darknet для работы в TensotFlow 
+```
+# Преобразование весов Darknet для работы в TensotFlow 
 # # yolov4
-python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4-416 --input_size 416 --model yolov4 `
+python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4-416 --input_size 416 --model yolov4 
+```
