@@ -1,5 +1,7 @@
 # Reid-Stand
 
+Стенд предназначен для реализации задачи повторной идентификации человека в видеопотоке.
+
 ## Установка
 
 1. Miniconda:
@@ -29,6 +31,7 @@ $ pip install pillow==6.2.2
 $ python setup.py develop`
 
 Все дальнейшие действия и запуск программы должны осуществляться из окружения reid. Перед именем пользователя в терминале должно быть написано (reid)
+
 3. Установить необходимые зависимости окружении reid:
 
 - flask: `pip install flask`
@@ -39,3 +42,14 @@ $ python setup.py develop`
 `git clone https://github.com/yaros1avsv/Reid-Stand.git`
 
 5. Преобразование YoloV4 для использования в TensorFlow
+
+В данной работе использовались предварительно обученные веса YOLOv4. 
+ссылка на скачивание весов: https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT
+Далее необходимо скопировать скачанный файл yolov4.weights из папки загрузок в папку data
+
+Чтобы реализовать YOLOv4 с помощью TensorFlow, сначала мы конвертируем .weights в соответствующие файлы модели TensorFlow, а затем запускаем модель.
+```
+# Преобразование весов Darknet для работы в TensotFlow 
+# # yolov4
+python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4-416 --input_size 416 --model yolov4 
+```
