@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block title %} Обнаруженные с камеры {% endblock %}
 {% block content %}
-  <button class="btn btn-info"><a href="{{ url_for('detected_to_query', id=id, cluster=cluster) }}">Переместить изображения в запросы</a>
+<a href="{{ url_for('detected_to_query', id=id, cluster=cluster) }}">
+  <button class="btn btn-primary">
+    Переместить изображения в запросы
   </button>
-    <br>
-  <button class="btn btn-info"><a href="{{ url_for('detected_to_galery', id=id, cluster=cluster) }}">Переместить изображения в галерею</a>
+</a>
+<br>
+<br>
+<a href="{{ url_for('detected_to_galery', id=id, cluster=cluster) }}">
+  <button class="btn btn-primary">
+    Переместить изображения в галерею
   </button>
-    <br>
+</a>
   <div class="row justify-content-center">
     {% for image in image_catalog %}
       <img class="m-2" src="{{ url_for('static', filename=image) }}" alt="{{ image }}">
