@@ -53,3 +53,8 @@ $ python setup.py develop`
 # # yolov4
 python save_model.py --weights ./data/yolov4.weights --output ./checkpoints/yolov4-416 --input_size 416 --model yolov4 
 ```
+6. Предварительно подготовленные видеоматериалы находятся по ссылке
+
+``
+7. Запускать командой `python app.py` из директории с проектом. 
+8. Перейти в браузере по адресу http://127.0.0.1:5000
